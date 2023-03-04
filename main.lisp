@@ -1,15 +1,12 @@
-;; Definir a estrutura de pilha
 (defstruct stack
   (data '()))
 
-;; Funções para empilhar e desempilhar valores
 (defun push (stack value)
   (push value (stack-data stack)))
 
 (defun pop (stack)
   (pop (stack-data stack)))
 
-;; Funções para realizar as operações de calculadora
 (defun add (stack)
   (let ((a (pop stack))
         (b (pop stack)))
@@ -51,7 +48,6 @@
     (push stack (exp a))))
 
 (defun rpn (expression)
-  "Calcula o resultado de uma expressão em notação polonesa reversa (RPN)."
   (let ((stack (make-stack)))
     (dolist (token expression)
       (cond ((numberp token)
@@ -76,7 +72,6 @@
              (exp stack))))
     (pop stack)))
 
-;; Funções para analisar expressões em notação infixa
 (defun tokenize (expression)
   (let ((tokens '())
         (buffer '()))
